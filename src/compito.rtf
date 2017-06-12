@@ -1,0 +1,90 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww14940\viewh12360\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 Metodologie di programmazione (A-L)\
+Prova di Laboratorio del 12 Giugno 2017
+\fs24 \
+\
+Thread corridori gareggiano su una pista. La pista \'e8 divisa in segmenti. I corridori passano\
+da un segmento all\'92altro procedendo dal primo (la partenza) all\'92ultimo (l\'92arrivo). In ogni istante\
+della gara ciascun segmento pu\'f2 trovarsi 
+\i occupato
+\i0  da un corridore, oppure 
+\i libero
+\i0 , cio\'e8 non\
+occupato da nessuno. I corridori hanno velocit\'e0 diverse e possono partire in momenti diversi.\
+Quando un corridore ne raggiunge un altro, lo travolge e prosegue nella sua corsa. La corsa\
+di un corridore termina quando viene travolto oppure quando giunge all\'92arrivo. La corsa finisce\
+quando tutti i corridori in gara hanno terminato la loro corsa. \
+\
+I corridori vengono implementati come oggetti di tipo Thread, la pista come una lista concatenata\
+(linked list) di thread. Ciascun elemento della lista rappresenta un segmento della pista. Quando\
+il valore associato ad un elemento della lista \'e8 un thread t (diverso da null) vuol dire che segmento\
+\'e8 occupato da t; se invece il suo valore \'e8 null, il segmento \'e8 libero. I corridori hanno (vengono creati\
+fornendogli) un nome, una pista su cui correre (nella gara, a tutti i corridori viene fornita la stessa pista)\
+e un tempo di delay (un intero). 
+\i Essenzialmente
+\i0 , un corridore esegue ciclicamente le seguenti operazioni:\
+esegue un paso (invoca il metodo 
+\i step
+\i0  della pista) con il quale va ad occupare il segmento successivo\
+a quello in cui si trova; dorme (sleep) per un certo tempo di delay (ogni corridore ha il suo); infine rilascia\
+il segmento che ha occupato (invoca il metodo 
+\i leave
+\i0  della pista) per passare al successivo. Se un\
+corridore trova occupato il segmento cui vuole accedere, lancia un\'92interruzione all\'92occupante (lo fa\
+il metodo 
+\i step
+\i0 ), che viene in tal modo travolto. Quest\'92ultimo deve terminare senza fare ulteriori passi.\
+\
+Vengono fornite le classi 
+\i Pista
+\i0 , che implementa la pista, e 
+\i Runner
+\i0 , che estende Thread con gli attributi di\
+cui un corridore ha bisogno. 
+\b Implementare un corridore definendo una classe 
+\i MyRunner
+\i0  che estenda\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\i \cf0 Runner
+\i0  ridefinendo il metodo run() di Thread. Si consegna un solo file MyRunner.java, senza\
+dichiarazioni di package!\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\b0 \cf0 \
+La classe 
+\i Test1
+\i0  fornisce un main per verificare il buon funzionamento del programma. Si giocano due\
+gare fra Wile E. Coyote e Road Runner (lo struzzo). La pista \'e8 lunga 5 passi. Parte sempre prima lo struzzo.\
+Nella prima gara \'e8 pi\'f9 veloce lo struzzo: entrambi arrivano al traguardo (il coyote ultimo!). Nella seconda il\
+coyote \'e8 pi\'f9 veloce e acchiappa il dannato struzzo! Il risultato atteso \'e8 il seguente (
+\i o qualcosa di simile! 
+\i0 ):\
+\
+roadrunner: step\
+roadrunner: step\
+coyote: step\
+roadrunner: step\
+roadrunner: step\
+coyote: step\
+roadrunner: step\
+coyote: step\
+coyote: step\
+coyote: step\
+NUOVA CORSA!\
+roadrunner: step\
+roadrunner: step\
+coyote: step\
+roadrunner: step\
+coyote: step\
+coyote: step\
+roadrunner preso!\
+coyote: step\
+coyote: step\
+\
+Process finished with exit code 0}
