@@ -13,7 +13,7 @@ public class MyRunner extends Runner {
                 sleep(delay);  //Attesa
                 p.leave();  //Lascia la posizione su cui si trova
                 p = p.getNext();  //Ottiene la posizione successiva
-                p.step();  //Si posizione sulla posizione successiva
+                p.step();  //Si posiziona nella casella successiva
                 if (p.arrivato()) {  //Se si è arrivati a destinazione interrompe il thread
                     System.out.println(this.getName() + " è arrivato!");
                     this.interrupt();
